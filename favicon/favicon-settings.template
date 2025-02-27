@@ -13,17 +13,17 @@
         "backgroundRadius": 0,
         "imageScale": 0.7
       },
-      "appTitle": "Dja"
+      "appTitle": "${DJANGO_PROJECT_NAME}"
     },
     "webAppManifest": {
       "transformation": {
         "type": "none"
       },
       "backgroundColor": "#ffffff",
-      "name": "Dja",
-      "shortName": "Dja",
+      "name": "${DJANGO_PROJECT_NAME}",
+      "shortName": "${DJANGO_PROJECT_NAME}",
       "themeColor": "#ffffff"
     }
   },
-  "path": "/static/dja/"
+  "path": "/${DJANGO_STATIC_URL}favicon/"
 }
