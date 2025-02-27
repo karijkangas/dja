@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 
-mkdir -p dja/static/favicon dja/templates/favicon temp
+TEMP=temp/favicon
+STATIC=dja/static/favicon
+TEMPLATES=dja/templates/favicon 
 
-envsubst < favicon/favicon-settings.template > temp/favicon-settings.json
+mkdir -p ${STATIC} ${TEMPLATES} ${TEMP}
 
-npx realfavicon generate ./favicon/favicon.svg ./temp/favicon-settings.json ./temp/output-data.json ./dja/static/favicon
+envsubst < favicon/favicon-settings.template > ${TEMP}/favicon-settings.json
 
-echo "" > temp/favicon.html
+npx realfavicon generate favicon/favicon.svg ${TEMP}/favicon-settings.json ${TEMP}/output-data.json ${STATIC}
 
-npx realfavicon inject temp/output-data.json temp temp/favicon.html
+echo "" > ${TEMP}/favicon.html
 
-sed -n '/<head>/,/<\/head>/p'  temp/favicon.html | sed "s/..head.//g" | sed 's/^[ \t]*//' > dja/templates/favicon/favicon.html
+npx realfavicon inject ${TEMP}/output-data.json ${TEMP} ${TEMP}/favicon.html
+
+sed -n '/<head>/,/<\/head>/p' ${TEMP}/favicon.html | sed "s/..head.//g" | sed 's/^[ \t]*//' > ${TEMPLATES}/favicon.html
 

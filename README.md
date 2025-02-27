@@ -11,7 +11,7 @@ Generate favicon:
 
 ```
 ./favicon/generate.sh
-# NOTE: generated favicon files have dependency to DJANGO_STATIC_URL.
+# NOTE: generated favicon has a dependency to DJANGO_STATIC_URL.
 ```
 
 Test favicon:
